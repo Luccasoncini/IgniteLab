@@ -5581,7 +5581,7 @@ export type GetLessonBySlugQueryVariables = Exact<{
 }>;
 
 
-export type GetLessonBySlugQuery = { __typename?: 'Query', lesson?: { __typename?: 'Lesson', title: string, videoId: string, description?: string | null, teacher?: { __typename?: 'Teacher', avatarURL: string, bio: string, name: string } | null } | null };
+export type GetLessonBySlugQuery = { __typename?: 'Query', lesson?: { __typename?: 'Lesson', title: string, videoId: string, description?: string | null, teacher?: { __typename?: 'Teacher', avatarURL: string, bio: string, name: string } | null, challenge?: { __typename?: 'Challenge', url: string, id: string } | null } | null };
 
 export type GetLessonsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -5633,6 +5633,10 @@ export const GetLessonBySlugDocument = gql`
       avatarURL
       bio
       name
+    }
+    challenge {
+      url
+      id
     }
   }
 }

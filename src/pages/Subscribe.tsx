@@ -24,24 +24,24 @@ export function Subscribe() {
             }
         })
 
-        navigate('/event');
+        navigate('/event/lesson/abertura-do-evento-ignite-lab');
 
     }
 
     return (
         <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
-            <div className="w-full max-w-[1100px] flex justify-between items-center mt-20 mx-auto">
-                <div className="max-w-[640px]">
+            <div className="flex flex-wrap justify-center items-center w-full lg:mt-20 lg:max-w-[950px] lg:justify-between xl:max-w-[1100px]">
+                <div className="flex flex-col justify-center items-center p-6 lg:items-start lg:max-w-[640px] lg:w-1/2 xl:w-2/3 lg:p-0 ">
                     <Logo/>
-                    <h1 className="mt-8 text-[2.5rem] leading-tight">
+                    <h1 className="w-full text-center mt-8 mb-6 text-[2.5rem] leading-tight  lg:text-left lg:mb-0">
                         Construa uma <strong className="text-theme-blue">aplicação completa</strong>, do zero, com <strong className="text-theme-blue">React</strong>
                     </h1>
-                    <p className="mt-4 text-theme-gray_text leading-relaxed">
+                    <p className="w-full text-center mt-4 mb-8 text-theme-gray_text leading-relaxed  lg:text-left lg:mb-0">
                         Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado.
                     </p>
                 </div>
 
-                <div className="p-8 bg-gray-700 border border-theme-gray_stroke rounded">
+                <div className="w-full p-8 bg-theme-gray_background border border-theme-gray_stroke rounded lg:w-1/2 xl:w-1/3 lg:max-w-sm">
                     <strong className="text-2xl mb-6 block">Inscreva-se gratuitamente</strong>
 
                     <form onSubmit={handleSubscribe} className="flex flex-col gap-2 w-full">
@@ -69,11 +69,10 @@ export function Subscribe() {
                         </button>
                     </form>
                 </div>
-
             </div>
 
+
             <img src={img} alt="" />
-            
         </div>
     ) 
 }

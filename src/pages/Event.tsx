@@ -13,7 +13,14 @@ export function Event() {
             <main className="flex flex-1">
                 { slug 
                     ? <Video lessonSlug={slug}/> 
-                    : <div className="flex-1"></div>
+                    : <div className="justify-center items-center w-full h-min-">
+                        <h2 className="hidden lg:block text-center bg-theme-warning p-9 rounded text-theme-gray_bars">
+                            Clique em alguma das aulas ao lado para o Video ser renderizado em tela!
+                        </h2>
+                        <h2 className="lg:hidden text-center bg-theme-warning p-9 rounded text-theme-gray_bars">
+                            Clique no menu de Aulas e seleciona alguma das aulas para o Video ser renderizado em tela!
+                        </h2>
+                      </div>
                 }
                 <Sidebar/>
             </main>

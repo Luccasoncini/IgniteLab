@@ -1,0 +1,47 @@
+import { useMenu } from "../hooks/useMenu";
+
+export function Menu() {
+    const { isMenuOpened, handleToggleMenu } = useMenu();
+
+    return(
+        <button 
+            onClick={() => {handleToggleMenu()}}
+            className="flex items-center justify-center lg:hidden"
+        >
+            <span className="hidden pr-2 sm0:block ">Aulas</span>
+            {isMenuOpened ? (
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    fill="none"
+                    viewBox="0 0 32 32"
+                >
+                    <path
+                        stroke="#81D8F7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M8 8l15.556 15.556M8 24L23.556 8.444"
+                    ></path>
+                </svg>
+            ) : (
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    fill="none"
+                    viewBox="0 0 32 32"
+                >
+                    <path
+                    stroke="#81D8F7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 16h22M5 8h22M5 24h22"
+                    ></path>
+                </svg>
+            )}
+        </button>
+    )
+}

@@ -4,6 +4,13 @@ module.exports = {
     './src/**/*.tsx'
   ],
   theme: {
+    screens: {
+      'sm0': '414px',
+      'sm': '640px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px'
+    },
     extend: {
       backgroundImage: {
         blur: 'url(/src/assets/blur.png)'

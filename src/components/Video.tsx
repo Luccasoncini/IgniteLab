@@ -1,4 +1,4 @@
-import { CaretRight, DiscordLogo, FileArrowDown, Lightning } from "phosphor-react";
+import { CaretRight, DiscordLogo, FileArrowDown, Lightning, Image } from "phosphor-react";
 import { DefaultUi, Player, Youtube } from "@vime/react";
 
 import '@vime/core/themes/default.css'
@@ -17,23 +17,30 @@ export function Video({lessonSlug}: VideoProps) {
     })
     
     if(!data || !data.lesson) {
-        return <div className="flex-1">Carregando</div>
+        return (
+            <>
+                <div className="flex-1 justify-center items-center flex h-[500px]">
+                    <span className="h-20 w-20 rounded-full border-theme-blue border-[8px] border-t-inherit border-t-transparent animate-spin">
+                    </span>
+                </div>
+            </>
+        )
     }
-
     return(
-        <div className="flex-1">
-            <div className="bg-black flex justify-center">
-                <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
+        <div className="flex-1 flex flex-col w-full">
+            <div className="flex justify-center items-center">   
+                <div className="w-full h-full aspect-video lg:h-auto lg:max-w-[1092px]">
                     <Player>
                         <Youtube videoId={data.lesson.videoId}/>
                         <DefaultUi />
                     </Player>
                 </div>
             </div>
+            
 
-            <div className="p-8 max-w-[1100px] mx-auto">
-                <div className="flex items-start gap-16">
-                    <div className="flex-1">
+            <div className="p-8 lg:flex lg:justify-center lg:items-center lg:flex-col">
+                <div className="flex items-start flex-col gap-y-4 lg:flex-row lg:justify-between lg:w-full lg:max-w-[1092px]">
+                    <div className="flex-1 w-full mr-10">
                         <h1 className="text-2xl font-bold"> 
                             {data.lesson.title}
                         </h1>
@@ -42,76 +49,76 @@ export function Video({lessonSlug}: VideoProps) {
                         </p>
 
                         {data.lesson.teacher && (
-                            <div className="flex items-center gap-4 mt-6">
+                            <div className="w-full flex items-center gap-4 my-6">
                                 <img
                                     className="h-16 w-16 rounded-full border-2 border-theme-blue" 
                                     src={data.lesson.teacher.avatarURL} 
-                                    alt=""
                                 />
-                                <div className="leading-relaxed">
-                                    <strong className="font-bold text-2xl block">
+                                <div className="flex flex-col gap-y-4 lg:gap-y-1">
+                                    <strong className="font-bold text-lg leading-7 block lg:text-2xl">
                                         {data.lesson.teacher.name}
                                     </strong>
-                                    <span className="text-gray-200 text-sm block">
+                                    <span className="text-gray-200 text-sm leading-5 block">
                                         {data.lesson.teacher.bio}
                                     </span>
                                 </div>
                             </div>
                         )}
-                        
                     </div>
 
-                    <div className="flex flex-col gap-4">
-                        <a href="" className="p-4 text-sm bg-theme-green flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-theme-green_dark transition-colors">
+                    <div className="flex flex-col gap-4 justify-center items-start w-full lg:w-auto">
+                        <a target="_blank" href="https://discord.gg/4kRsZ6Tf2y" className="p-4 text-sm bg-theme-green flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-theme-green_dark transition-colors w-full lg:w-auto">
                             <DiscordLogo size={24} />
                             Comunidade do Discord
                         </a>
-                        <a href="" className="p-4 text-sm border border-theme-blue text-theme-blue flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-theme-blue hover:text-theme-gray_bars transition-colors">
-                            <Lightning size={24} />
-                            Acesso ao Desafio
-                        </a>
+
+                        { data.lesson.challenge && (
+                            <a href={data.lesson.challenge.url} className="p-4 text-sm border border-theme-blue text-theme-blue flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-theme-blue hover:text-theme-gray_bars transition-colors  w-full">
+                                <Lightning size={24} />
+                                Acesso ao Desafio
+                            </a>
+                        )}
                     </div>
                 </div>
 
-                <div className="gap-8 mt-20 grid grid-cols-2">
-                    <a href="" className="bg-theme-gray_bar overflow-hidden flex items-stretch gap-6 hover:bg-theme-gray_elements transition-colors"> 
-                        <div className="bg-theme-green_dark h-full p-6 flex items-center">
+                <div className="mt-16 grid grid-rows-2 gap-4 lg:grid-cols-2 lg:grid-rows-none lg:max-w-[1092px]">
+                    <a className="flex justify-around items-center h-full bg-theme-gray_background overflow-hidden gap-4 hover:bg-theme-gray_elements transition-colors rounded-md" target="_blank" href="https://efficient-sloth-d85.notion.site/Material-complementar-86d4ef35af16471ebc3ae3eba1a378e5" > 
+                        <div className="py-5 bg-theme-green_dark h-full p-2 flex justify-center items-center xl:py-20 xl:px-6">
                             <FileArrowDown size={40}/>
                         </div>
 
-                        <div className="py-6 leading-relaxed">
-                            <strong className="text-2xl">
+                        <div className="py-5 flex flex-col justify-start items-center">
+                            <strong className="text-lg lg:text-2xl text-left w-full">
                                 Material Complementar
                             </strong>
-                            <p className="text-sm text-theme-gray_text mt-2">
+                            <p className="text-xstext-theme-gray_text mt-2 lg:text-sm">
                                 Acesse o material complementar para acelerar o seu desenvolvimento
                             </p>
                         </div>
 
-                        <div className="h-full p-6 flex items-center">
+                        <div className="py-5 my-auto flex justify-center text-theme-blue xl:mr-5">
                             <CaretRight size={24} />
                         </div>
                     </a>
-                    
-                    <a href="" className="bg-theme-gray_bar overflow-hidden flex items-stretch gap-6 hover:bg-theme-gray_elements transition-colors"> 
-                        <div className="bg-theme-green_dark h-full p-6 flex items-center">
-                            <FileArrowDown size={40}/>
+
+                    <a className="h-full bg-theme-gray_background justify-around items-center overflow-hidden flex gap-4 hover:bg-theme-gray_elements transition-colors rounded-md" target="_blank" href="https://drive.google.com/drive/folders/1mxWnvlqmH7MbVRv2Na9xFNgCQCygM1iR" > 
+                        <div className="bg-theme-green_dark h-full p-2 flex justify-center items-center xl:py-20 xl:px-6 ">
+                            <Image size={40}/>
                         </div>
 
-                        <div className="py-6 leading-relaxed">
-                            <strong className="text-2xl">
+                        <div className="flex flex-col justify-start items-center">
+                            <strong className="text-lg lg:text-2xl text-left w-full">
                                 Wallpapers exclusivos
                             </strong>
-                            <p className="text-sm text-theme-gray_text mt-2">
-                                Baixe wallpapers exclusivos do Ignite Lab e personalize a sua máquina
+                            <p className="text-xstext-theme-gray_text mt-2 lg:text-sm">
+                             Baixe wallpapers exclusivos do Ignite Lab e personalize a sua máquina
                             </p>
                         </div>
 
-                        <div className="h-full p-6 flex items-center">
+                        <div className="my-auto flex justify-center text-theme-blue xl:mr-5">
                             <CaretRight size={24} />
                         </div>
                     </a>
-                    <a href=""></a>
                 </div>
             </div>
         </div>

@@ -6,3 +6,9 @@ body{
     @apply bg-theme-gray_bars text-theme-gray_text;
     -webkit-font-smoothing: antialiased;
 }
+
+@media (max-width: 1023px){
+    .body-overflow{
+        overflow: hidden;
+    }
+}

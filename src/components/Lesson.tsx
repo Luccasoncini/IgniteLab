@@ -2,6 +2,7 @@ import { CheckCircle, Lock } from 'phosphor-react'
 import { isPast, format } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 import { Link, useParams } from 'react-router-dom';
+import { useMenu } from '../hooks/useMenu';
 
 interface LessonProps {
     title: string;
@@ -20,8 +21,10 @@ export function Lesson(props: LessonProps) {
 
     const isActiveLesson = slug == props.slug
 
+    const { handleToggleMenu } = useMenu(); 
+
     return(
-        <Link to={`/event/lesson/${props.slug}`} className="group">
+        <Link to={`/event/lesson/${props.slug}`} onClick={() => {handleToggleMenu()}} className="group">
             <span className="text-theme-gray_text">
                 {availableFateFormatted}
             </span>
